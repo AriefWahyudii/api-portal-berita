@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthentificationController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\Authenticate;
 use Illuminate\Http\Request;
@@ -34,6 +35,8 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::patch('/posts/{id}', [PostController::class, 'update'])->middleware('post.owner');
 
     Route::delete('/posts/{id}', [PostController::class, 'delete'])->middleware('post.owner');
+
+    Route::post('/comment', [CommentController::class, 'store']);
 });
 
 Route::post('/login', [AuthentificationController::class, 'login']);
