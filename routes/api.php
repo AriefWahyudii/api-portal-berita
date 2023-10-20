@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthentificationController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\Authenticate;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +38,10 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::delete('/posts/{id}', [PostController::class, 'delete'])->middleware('post.owner');
 
     Route::post('/comment', [CommentController::class, 'store']);
+
+    Route::patch('/comment/{id}', [CommentController::class, 'update'])->middleware('comment.owner');
+
+    Route::delete('/comment/{id}', [CommentController::class, 'destroy'])->middleware('comment.owner');
 });
 
 Route::post('/login', [AuthentificationController::class, 'login']);

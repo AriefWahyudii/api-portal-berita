@@ -20,7 +20,7 @@ class PostResource extends JsonResource
             'news_content' => $this->news_content,
             'author_id' => $this->user_id,
             'writer' => $this->whenLoaded('writer'),
-            'comments' => $this->whenLoaded('comments');
+            'comments' => $this->whenLoaded('comments'),
             'created_at' => date_format($this->created_at, "Y/m/d H:i:s"),
 
         ];
