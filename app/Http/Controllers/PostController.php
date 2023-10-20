@@ -44,7 +44,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->update($request->all());
 
-        return new PostResource($post->loadMissing('writer'));
+        return new PostResource($post->loadMissing('writer', 'comments'));
     }
 
     function delete($id) {
